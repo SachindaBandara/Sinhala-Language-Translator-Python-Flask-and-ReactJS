@@ -1,8 +1,8 @@
 // src/App.js
 import React from 'react';
-import Navbar from './components/Navbar';
-import TravelPlaces from './components/TravelPlaces';
-import Translator from './components/Translator';
+import Navbar from './Navbar';
+import TravelPlaces from './TravelPlaces';
+import Translator from './Translator';
 
 function App() {
   return (
