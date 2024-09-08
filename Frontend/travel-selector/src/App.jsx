@@ -1,17 +1,12 @@
-// src/App.js
+// src/App.jsx
 import React from 'react';
-import Navbar from './Navbar';
-import TravelPlaces from './TravelPlaces';
 import Translator from './Translator';
+import './index.css';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <div className="container mx-auto p-4">
-        <TravelPlaces />
-        <Translator />
-      </div>
+    <div>
+      <Translator />
     </div>
   );
 }

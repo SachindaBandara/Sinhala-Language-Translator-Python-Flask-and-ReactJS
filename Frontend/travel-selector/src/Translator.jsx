@@ -1,17 +1,15 @@
-// src/components/Translator.js
+// src/components/Translator.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 
 function Translator() {
   const [text, setText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
-  const [language, setLanguage] = useState('es');
 
   const handleTranslate = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/translate', {
         text: text,
-        dest_lang: language,
       });
       setTranslatedText(response.data.translated_text);
     } catch (error) {
@@ -20,37 +18,24 @@ function Translator() {
   };
 
   return (
-    <div className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Translate Text</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h1 className="text-3xl font-bold mb-6">Sinhala Language Translator</h1>
       <textarea
-        className="border p-2 w-full mb-4"
+        className="w-96 p-2 border rounded-md mb-4"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter text to translate"
       />
-      <select
-        className="border p-2 mb-4 w-full"
-        value={language}
-        onChange={(e) => setLanguage(e.target.value)}
-      >
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-        <option value="ja">Japanese</option>
-        <option value="zh-cn">Chinese (Simplified)</option>
-      </select>
       <button
-        className="bg-blue-500 text-white p-2 w-full"
+        className="w-96 p-2 bg-blue-500 text-white rounded-md mb-4"
         onClick={handleTranslate}
       >
-        Translate
+        Translate to Sinhala
       </button>
-      {translatedText && (
-        <div className="mt-4 p-4 border bg-gray-100">
-          <h3 className="font-bold">Translated Text:</h3>
-          <p>{translatedText}</p>
-        </div>
-      )}
+      <div className="w-96 p-4 bg-white border rounded-md">
+        <h2 className="text-xl font-bold mb-2">Translated Text:</h2>
+        <p>{translatedText}</p>
+      </div>
     </div>
   );
 }
